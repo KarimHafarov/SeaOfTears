@@ -1,15 +1,17 @@
 package com.example.diploma_work
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 
-class MainActivity3Main : AppCompatActivity() {
+class MainActivity5Statistic : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_activity3_main)
+        setContentView(R.layout.activity_main_activity5_statistic)
+
         val maininfo: Button = findViewById<Button>(R.id.button_main)
         val statistics: Button = findViewById<Button>(R.id.button_statistic)
         val profile: Button = findViewById<Button>(R.id.button_profile)
@@ -20,8 +22,8 @@ class MainActivity3Main : AppCompatActivity() {
             finish()
         }
 
-        statistics.setOnClickListener {
-            val intent = Intent(this, MainActivity5Statistic::class.java)
+        maininfo.setOnClickListener {
+            val intent = Intent(this, MainActivity3Main::class.java)
             startActivity(intent)
             finish()
         }

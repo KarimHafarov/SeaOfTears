@@ -7,6 +7,8 @@
     android:background="#377E47"
     tools:context=".MainActivity4Profile">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="170dp"
@@ -49,7 +51,8 @@
         app:layout_constraintTop_toBottomOf="@id/nameemail" />
 
     <Button
-        android:background="@drawable/menusetup2"
+        android:drawableTop="@drawable/baseline_main"
+        android:background="@drawable/menusetup3"
         android:id="@+id/button_main"
         android:layout_width="137dp"
         android:layout_height="60dp"
@@ -60,7 +63,8 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:background="@drawable/menusetup2"
+        android:drawableTop="@drawable/baseline_add"
+        android:background="@drawable/menusetup3"
         android:id="@+id/button_statistic"
         android:layout_width="138dp"
         android:layout_height="60dp"
@@ -71,7 +75,8 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:background="@drawable/menusetup2"
+        android:drawableTop="@drawable/baseline_account"
+        android:background="@drawable/menusetup4"
         android:id="@+id/button_profile"
         android:layout_width="137dp"
         android:layout_height="60dp"
@@ -79,5 +84,5 @@
         android:textColor="@color/white"
         android:text="Профіль"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

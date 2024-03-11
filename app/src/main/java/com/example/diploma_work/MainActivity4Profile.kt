@@ -13,9 +13,21 @@ class MainActivity4Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_activity4_profile)
 
-        val maininfo: TextView = findViewById(R.id.button_main)
-        val statistics: TextView = findViewById(R.id.button_statistic)
-        val profile: TextView = findViewById(R.id.button_profile)
+        val maininfo: Button = findViewById<Button>(R.id.button_main)
+        val statistics: Button = findViewById<Button>(R.id.button_statistic)
+        val profile: Button = findViewById<Button>(R.id.button_profile)
+
+        maininfo.setOnClickListener {
+            val intent = Intent(this, MainActivity3Main::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        statistics.setOnClickListener {
+            val intent = Intent(this, MainActivity5Statistic::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         var sp = getSharedPreferences("PC", Context.MODE_PRIVATE)
         sp.edit().putString("TY", "9").commit()

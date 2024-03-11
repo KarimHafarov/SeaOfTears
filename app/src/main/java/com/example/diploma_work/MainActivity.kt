@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                                 df = true;
                                 sp.edit().putString("Name", name.text.toString()).commit()
                                 startActivity(Intent(this, MainActivity2::class.java))
+                                finish()
                             }
                             else if(document.getString("password")!= password.text){
                                 password.text=""
