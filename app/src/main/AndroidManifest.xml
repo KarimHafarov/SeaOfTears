@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity3CreateUsers"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity5Statistic"
             android:exported="false" />
         <activity

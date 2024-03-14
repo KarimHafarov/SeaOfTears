@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3CreateUsers"
+    android:background="@drawable/border">
+
+    <Button
+        android:id="@+id/button_close"
+        android:background="@drawable/menusetup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Назад"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp" />
+
+    <ImageView
+        android:id="@+id/imageView_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logopersona"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="150dp"/>
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/imageView_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:hint="Enter your name"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@id/textView_name"
+        app:layout_constraintEnd_toEndOf="@id/textView_name"
+        app:layout_constraintTop_toBottomOf="@id/textView_name"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/textView_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Surname"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/editText_name"
+        app:layout_constraintStart_toStartOf="@id/editText_name"
+        app:layout_constraintEnd_toEndOf="@id/editText_name"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editText_surname"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
+        android:hint="Enter your surname"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@id/textView_surname"
+        app:layout_constraintEnd_toEndOf="@id/textView_surname"
+        app:layout_constraintTop_toBottomOf="@id/textView_surname"
+        android:layout_marginTop="5dp"/>
+
+
+    <Button
+        android:background="@drawable/menusetup2"
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintTop_toBottomOf="@id/editText_surname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
