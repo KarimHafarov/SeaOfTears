@@ -18,12 +18,14 @@ class MainActivity : AppCompatActivity() {
         var sp = getSharedPreferences("PC", Context.MODE_PRIVATE)
         if(sp.getString("TY", "-9")!= "-9"){
             startActivity(Intent(this, MainActivity2::class.java))
+            finish()
         }
         else {
             var createuser: TextView = findViewById(R.id.textViewCreateUser)
             createuser.setOnClickListener {
                 var intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         val name: TextView = findViewById(R.id.editTextName)

@@ -22,11 +22,10 @@ class MainActivity2 : AppCompatActivity() {
             val intent = Intent(this, MainActivity3Main::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 2000)
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-
     }
 }
