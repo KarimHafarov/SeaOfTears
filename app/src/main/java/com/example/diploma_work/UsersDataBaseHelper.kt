@@ -20,6 +20,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         const val COLUMN_FATHERNAME = "fathername"
         const val COLUMN_SURNAME = "surname"
         const val COLUMN_TIME = "time"
+        const val COLUMN_DUTY = "duty"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -30,7 +31,8 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
                 $COLUMN_NAME TEXT,
                 $COLUMN_FATHERNAME TEXT,
                 $COLUMN_SURNAME TEXT,
-                $COLUMN_TIME TEXT
+                $COLUMN_TIME TEXT,
+                $COLUMN_DUTY TEXT
             )
         """.trimIndent()
 
@@ -51,6 +53,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
             put(COLUMN_FATHERNAME, user.fathername)
             put(COLUMN_SURNAME, user.surname)
             put(COLUMN_TIME, user.time)
+            put(COLUMN_DUTY, user.duty)
         }
         db.insert(TABLE_NAME, null, values)
         db.close()
@@ -70,7 +73,8 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
                 val fathername = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHERNAME))
                 val surname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SURNAME))
                 val time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME))
-                val user = User(id, rank, name, fathername, surname, time)
+                val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
+                val user = User(id, rank, name, fathername, surname, time, duty)
                 users.add(user)
             } while (cursor.moveToNext())
         }
@@ -89,6 +93,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
             put(COLUMN_FATHERNAME, user.fathername)
             put(COLUMN_SURNAME, user.surname)
             put(COLUMN_TIME, user.time)
+            put(COLUMN_DUTY, user.duty)
         }
         val whereClause = "$COLUMN_ID = ?"
         val whereArgs = arrayOf(user.id.toString())
@@ -109,7 +114,8 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
             val fathername = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHERNAME))
             val surname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SURNAME))
             val time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME))
-            user = User(id, rank, name, fathername, surname, time)
+            val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
+            user = User(id, rank, name, fathername, surname, time, duty)
         }
 
         cursor.close()
