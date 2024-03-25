@@ -8,19 +8,34 @@
     tools:context=".MainActivity3Main">
 
 
-        <Button
-        android:background="@drawable/menusetup2"
-        android:id="@+id/add_user"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:text="+"
-        android:textSize="30dp"
-        android:gravity="center"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/UsersRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        />
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_user"
+        app:layout_constraintVertical_bias="0.031" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+       app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/baseline_add_24"
+        android:contentDescription="Move to another screen"/>
+
 
     <Button
         android:drawableTop="@drawable/baseline_main"
@@ -57,5 +72,6 @@
         android:text="Профіль"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

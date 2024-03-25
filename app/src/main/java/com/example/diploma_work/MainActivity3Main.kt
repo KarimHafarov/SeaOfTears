@@ -1,37 +1,56 @@
 package com.example.diploma_work
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.diploma_work.databinding.ActivityMainActivity3MainBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity3Main : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
+    private lateinit var binding: ActivityMainActivity3MainBinding
+    private lateinit var db: UsersDataBaseHelper
+    private lateinit var usersAdapter: UsersAdapter
+
+    private lateinit var statistics: Button
+    private lateinit var profile: Button
+    private lateinit var addUser: FloatingActionButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_activity3_main)
-        val maininfo: Button = findViewById<Button>(R.id.button_main)
-        val statistics: Button = findViewById<Button>(R.id.button_statistic)
-        val profile: Button = findViewById<Button>(R.id.button_profile)
-        val adduser : Button = findViewById<Button>(R.id.add_user)
+        binding = ActivityMainActivity3MainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        db = UsersDataBaseHelper(this)
+        usersAdapter = UsersAdapter(db.getAllUsers(), this)
+
+        binding.UsersRecycleView.layoutManager = LinearLayoutManager(this)
+        binding.UsersRecycleView.adapter = usersAdapter
+
+        addUser = findViewById(R.id.add_user)
+        profile = findViewById(R.id.button_profile)
+        statistics = findViewById(R.id.button_statistic)
+
+        addUser.setOnClickListener {
+            val intent = Intent(this, MainActivity3CreateUsers::class.java)
+            startActivity(intent)
+        }
 
         profile.setOnClickListener {
-            val intent = Intent(this, MainActivity4Profile::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity4Profile::class.java))
             finish()
         }
 
         statistics.setOnClickListener {
-            val intent = Intent(this, MainActivity5Statistic::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity5Statistic::class.java))
             finish()
         }
+    }
 
-        adduser.setOnClickListener {
-            val intent = Intent(this, MainActivity3CreateUsers::class.java)
-            startActivity(intent)
-        }
+    override fun onResume() {
+        super.onResume()
+        usersAdapter.refreshData(db.getAllUsers())
     }
 }

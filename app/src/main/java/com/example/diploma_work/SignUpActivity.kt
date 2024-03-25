@@ -7,7 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpActivity : AppCompatActivity() {
@@ -15,8 +15,9 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        FirebaseApp.initializeApp(this)
+
         val sp = getSharedPreferences("PC", Context.MODE_PRIVATE).edit()
+
         val signin: TextView = findViewById(R.id.textViewCreateUser)
         signin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -25,8 +26,8 @@ class SignUpActivity : AppCompatActivity() {
 
         val name: TextView = findViewById(R.id.editTextName)
         val password: TextView = findViewById(R.id.editTextPassword)
-        val button: ConstraintLayout = findViewById(R.id.button_SetIn)
 
+        val button: ConstraintLayout = findViewById(R.id.button_SetIn)
         button.setOnClickListener {
             when {
                 name.text.isEmpty() || name.text.contains("@") -> {
@@ -36,17 +37,19 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, "Invalid password", Toast.LENGTH_LONG).show()
                 }
                 else -> {
-                    val db = FirebaseFirestore.getInstance()
+                    val currentUserID = FirebaseAuth.getInstance().currentUser?.uid
 
                     val user = hashMapOf(
                         "name" to name.text.toString(),
-                        "password" to password.text.toString()
+                        "password" to password.text.toString(),
+                        "created_by" to currentUserID
                     )
 
-                    db.collection("users")
+                    FirebaseFirestore.getInstance().collection("users")
                         .add(user)
                         .addOnSuccessListener { documentReference ->
                             sp.putString("Name", name.text.toString()).commit()
+
                             startActivity(Intent(this, MainActivity2::class.java))
                         }
                         .addOnFailureListener { e ->
