@@ -48,7 +48,7 @@ class MainActivity3CreateUsers : AppCompatActivity() {
                     Toast.makeText(this, "Please enter a surname", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    val user = User(0, rank, name, fathername, surname,"")
+                    val user = User(0, rank, name, fathername, surname,"", "")
                     db.insertUser(user)
                     Toast.makeText(this, "User saved successfully", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity3Main::class.java))

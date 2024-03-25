@@ -34,6 +34,7 @@ class UpdateUserActivity : AppCompatActivity() {
         binding.updateEditText3.setText(user.fathername)
         binding.updateEditText1.setText(user.surname)
         binding.timeEditText1.setText(user.time)
+        binding.dutyEditText1.setText(user.duty)
 
         binding.updateimageView.setOnClickListener {
             val newRank = binding.updateEditText2.text.toString()
@@ -41,7 +42,8 @@ class UpdateUserActivity : AppCompatActivity() {
             val newName = binding.updateEditText.text.toString()
             val newSurname = binding.updateEditText1.text.toString()
             val newTime = binding.timeEditText1.text.toString()
-            val updatedUser = User(userId,newRank,newFathername, newName, newSurname, newTime)
+            val newDuty = binding.dutyEditText1.text.toString()
+            val updatedUser = User(userId,newRank,newFathername, newName, newSurname, newTime, newDuty)
 
             db.updateUser(updatedUser)
             finish()

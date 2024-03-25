@@ -21,6 +21,7 @@ class UsersAdapter (private var users: List<User>, context: Context) : RecyclerV
         val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         val rankTextView: TextView = itemView.findViewById(R.id.RankTextView)
         val fatherTextView: TextView = itemView.findViewById(R.id.fathernameTextView)
+        val dutyTextView: TextView = itemView.findViewById(R.id.dutyTextView)
 
 
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
@@ -42,6 +43,7 @@ class UsersAdapter (private var users: List<User>, context: Context) : RecyclerV
         holder.nameTextView.text = user.name
         holder.surnameTextView.text = user.surname
         holder.timeTextView.text = user.time
+        holder.dutyTextView.text = user.duty
 
         holder.updateButton.setOnClickListener {
             val intent = Intent(holder.itemView.context, UpdateUserActivity::class.java).apply {

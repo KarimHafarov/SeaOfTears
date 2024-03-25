@@ -12,7 +12,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
         const val TABLE_NAME = "users"
         const val COLUMN_ID = "_id"
         const val COLUMN_RANK = "rank"
