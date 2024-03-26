@@ -39,7 +39,7 @@ class UsersAdapter (private var users: List<User>, context: Context) : RecyclerV
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
         holder.rankTextView.text = user.rank
-        holder.fatherTextView.text = user.fathername
+        holder.fatherTextView.text = user.father
         holder.nameTextView.text = user.name
         holder.surnameTextView.text = user.surname
         holder.timeTextView.text = user.time

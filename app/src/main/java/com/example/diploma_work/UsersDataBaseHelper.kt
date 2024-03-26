@@ -12,12 +12,12 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 4
+        private const val DATABASE_VERSION = 5
         const val TABLE_NAME = "users"
         const val COLUMN_ID = "_id"
         const val COLUMN_RANK = "rank"
         const val COLUMN_NAME = "name"
-        const val COLUMN_FATHERNAME = "fathername"
+        const val COLUMN_FATHER = "father"
         const val COLUMN_SURNAME = "surname"
         const val COLUMN_TIME = "time"
         const val COLUMN_DUTY = "duty"
@@ -29,7 +29,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
                 $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_RANK TEXT,
                 $COLUMN_NAME TEXT,
-                $COLUMN_FATHERNAME TEXT,
+                $COLUMN_FATHER TEXT,
                 $COLUMN_SURNAME TEXT,
                 $COLUMN_TIME TEXT,
                 $COLUMN_DUTY TEXT
@@ -50,7 +50,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         val values = ContentValues().apply {
             put(COLUMN_RANK, user.rank)
             put(COLUMN_NAME, user.name)
-            put(COLUMN_FATHERNAME, user.fathername)
+            put(COLUMN_FATHER, user.father)
             put(COLUMN_SURNAME, user.surname)
             put(COLUMN_TIME, user.time)
             put(COLUMN_DUTY, user.duty)
@@ -70,11 +70,11 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
                 val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
                 val rank = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RANK))
                 val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
-                val fathername = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHERNAME))
+                val father = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHER))
                 val surname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SURNAME))
                 val time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME))
                 val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
-                val user = User(id, rank, name, fathername, surname, time, duty)
+                val user = User(id, rank, name, father, surname, time, duty)
                 users.add(user)
             } while (cursor.moveToNext())
         }
@@ -90,7 +90,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         val values = ContentValues().apply {
             put(COLUMN_RANK,user.rank)
             put(COLUMN_NAME, user.name)
-            put(COLUMN_FATHERNAME, user.fathername)
+            put(COLUMN_FATHER, user.father)
             put(COLUMN_SURNAME, user.surname)
             put(COLUMN_TIME, user.time)
             put(COLUMN_DUTY, user.duty)
@@ -111,11 +111,11 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
             val rank = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RANK))
             val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
-            val fathername = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHERNAME))
+            val father = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHER))
             val surname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SURNAME))
             val time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME))
             val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
-            user = User(id, rank, name, fathername, surname, time, duty)
+            user = User(id, rank, name, father, surname, time, duty)
         }
 
         cursor.close()

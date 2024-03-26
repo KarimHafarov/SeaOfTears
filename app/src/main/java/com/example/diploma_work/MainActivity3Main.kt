@@ -23,6 +23,8 @@ class MainActivity3Main : AppCompatActivity() {
         binding = ActivityMainActivity3MainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         db = UsersDataBaseHelper(this)
         usersAdapter = UsersAdapter(db.getAllUsers(), this)
 

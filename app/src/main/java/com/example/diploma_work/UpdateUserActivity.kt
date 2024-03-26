@@ -31,19 +31,19 @@ class UpdateUserActivity : AppCompatActivity() {
 
         binding.updateEditText2.setText(user.rank)
         binding.updateEditText.setText(user.name)
-        binding.updateEditText3.setText(user.fathername)
+        binding.updateEditText3.setText(user.father)
         binding.updateEditText1.setText(user.surname)
         binding.timeEditText1.setText(user.time)
         binding.dutyEditText1.setText(user.duty)
 
         binding.updateimageView.setOnClickListener {
             val newRank = binding.updateEditText2.text.toString()
-            val newFathername = binding.updateEditText3.text.toString()
+            val newFather = binding.updateEditText3.text.toString()
             val newName = binding.updateEditText.text.toString()
             val newSurname = binding.updateEditText1.text.toString()
             val newTime = binding.timeEditText1.text.toString()
             val newDuty = binding.dutyEditText1.text.toString()
-            val updatedUser = User(userId,newRank,newFathername, newName, newSurname, newTime, newDuty)
+            val updatedUser = User(userId,newRank,newFather, newName, newSurname, newTime, newDuty)
 
             db.updateUser(updatedUser)
             finish()
