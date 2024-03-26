@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class UsersAdapter (private var users: List<User>, context: Context) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter(private var users: List<User>, context: Context) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private val db: UsersDataBaseHelper = UsersDataBaseHelper(context)
 
@@ -22,11 +22,8 @@ class UsersAdapter (private var users: List<User>, context: Context) : RecyclerV
         val rankTextView: TextView = itemView.findViewById(R.id.RankTextView)
         val fatherTextView: TextView = itemView.findViewById(R.id.fathernameTextView)
         val dutyTextView: TextView = itemView.findViewById(R.id.dutyTextView)
-
-
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -65,4 +62,12 @@ class UsersAdapter (private var users: List<User>, context: Context) : RecyclerV
         notifyDataSetChanged()
     }
 }
+
+
+
+
+
+
+
+
 

@@ -24,7 +24,6 @@ class MainActivity3Main : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         db = UsersDataBaseHelper(this)
         usersAdapter = UsersAdapter(db.getAllUsers(), this)
 

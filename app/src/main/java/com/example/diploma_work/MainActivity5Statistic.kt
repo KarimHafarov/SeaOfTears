@@ -5,8 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity5Statistic : AppCompatActivity() {
+    private lateinit var editTextSearch: EditText
+    private lateinit var buttonSearch: Button
+    private lateinit var recyclerViewUsers: RecyclerView
+    private lateinit var usersAdapter: UsersAdapter
+    private lateinit var db: UsersDataBaseHelper
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +23,8 @@ class MainActivity5Statistic : AppCompatActivity() {
         val maininfo: Button = findViewById<Button>(R.id.button_main)
         val statistics: Button = findViewById<Button>(R.id.button_statistic)
         val profile: Button = findViewById<Button>(R.id.button_profile)
+
+
 
         profile.setOnClickListener {
             val intent = Intent(this, MainActivity4Profile::class.java)

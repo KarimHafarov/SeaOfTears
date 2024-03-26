@@ -7,6 +7,36 @@
     android:background="#377E47"
     tools:context=".MainActivity5Statistic">
 
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:hint="Enter name to search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"/>
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:background="@drawable/menusetup5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextSearch"
+        android:text="Search"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/buttonSearch"
+        android:visibility="gone" />
 
     <Button
         android:drawableTop="@drawable/baseline_main"
