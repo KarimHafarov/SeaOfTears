@@ -62,12 +62,3 @@ class UsersAdapter(private var users: List<User>, context: Context) : RecyclerVi
         notifyDataSetChanged()
     }
 }
-
-
-
-
-
-
-
-
-
