@@ -1,12 +1,15 @@
+
 package com.example.diploma_work
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diploma_work.databinding.ActivityMainActivity3MainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.File
 
 class MainActivity3Main : AppCompatActivity() {
 
@@ -37,6 +40,11 @@ class MainActivity3Main : AppCompatActivity() {
         profile = findViewById(R.id.button_profile)
         statistics = findViewById(R.id.button_statistic)
 
+        val exportExcelButton: Button = findViewById(R.id.export_excel_button)
+        exportExcelButton.setOnClickListener {
+            exportDataToExcel()
+        }
+
         addUser.setOnClickListener {
             val intent = Intent(this, MainActivity3CreateUsers::class.java)
             intent.putExtra("ADMIN_ID", adminId)
@@ -56,6 +64,21 @@ class MainActivity3Main : AppCompatActivity() {
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private fun exportDataToExcel() {
+        val userList = db.getAllUsers(adminId)
+        if (userList.isNotEmpty()) {
+            val filePath = ExcelExporter.exportDataToExcel(this, userList)
+            if (filePath != null) {
+                val file = File(filePath)
+                ExcelExporter.openExcelFile(this, file)
+            } else {
+                Toast.makeText(this, "Не вдалося експортувати дані в Excel", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, "Немає даних для експорту", Toast.LENGTH_SHORT).show()
         }
     }
 

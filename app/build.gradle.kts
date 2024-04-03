@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.diploma_work"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -45,6 +45,7 @@ android {
 
 
 dependencies {
+    implementation ("org.apache.poi:poi:5.2.5")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
