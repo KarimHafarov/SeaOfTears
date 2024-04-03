@@ -1,6 +1,5 @@
 package com.example.diploma_work
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class UsersAdapter(private var users: List<User>, context: Context) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter(private var users: List<User>, private val context: Context, private val adminId: Int) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private val db: UsersDataBaseHelper = UsersDataBaseHelper(context)
 
@@ -43,20 +42,20 @@ class UsersAdapter(private var users: List<User>, context: Context) : RecyclerVi
         holder.dutyTextView.text = user.duty
 
         holder.updateButton.setOnClickListener {
-            val intent = Intent(holder.itemView.context, UpdateUserActivity::class.java).apply {
+            val intent = Intent(context, UpdateUserActivity::class.java).apply {
                 putExtra("user_id", user.id)
             }
-            holder.itemView.context.startActivity(intent)
+            context.startActivity(intent)
         }
 
         holder.deleteButton.setOnClickListener {
-            db.deleteUser(user.id.toLong())
-            refreshData(db.getAllUsers())
-            Toast.makeText(holder.itemView.context, "User deleted", Toast.LENGTH_LONG).show()
+            db.deleteUser(user.id.toInt())
+            refreshData(db.getAllUsers(adminId))
+            Toast.makeText(context, "Користувача видалено", Toast.LENGTH_LONG).show()
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+
     fun refreshData(newUsers: List<User>) {
         users = newUsers
         notifyDataSetChanged()

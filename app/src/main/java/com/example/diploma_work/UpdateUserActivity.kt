@@ -43,11 +43,11 @@ class UpdateUserActivity : AppCompatActivity() {
             val newSurname = binding.updateEditText1.text.toString()
             val newTime = binding.timeEditText1.text.toString()
             val newDuty = binding.dutyEditText1.text.toString()
-            val updatedUser = User(userId,newRank,newFather, newName, newSurname, newTime, newDuty)
+            val updatedUser = User(userId,newRank, newName, newFather, newSurname, newTime, newDuty)
 
             db.updateUser(updatedUser)
             finish()
-            Toast.makeText(this, "Changes saved", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Зміни збережено", Toast.LENGTH_LONG).show()
         }
     }
 }

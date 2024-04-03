@@ -32,6 +32,7 @@
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
     <EditText
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText"
         android:layout_width="180dp"
@@ -45,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/updateEditText2" />
 
     <EditText
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText2"
         android:layout_width="180dp"
@@ -58,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edittextView" />
 
     <EditText
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText1"
         android:layout_width="180dp"
@@ -71,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edittextView" />
 
     <EditText
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText3"
         android:layout_width="180dp"

@@ -11,7 +11,7 @@
         android:id="@+id/cardView"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="140dp"
         app:cardCornerRadius="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,7 @@
     </androidx.cardview.widget.CardView>
 
     <EditText
+        android:drawableLeft="@drawable/baseline_account_box_24"
         android:background="@drawable/menusetup"
         android:id="@+id/editTextName"
         android:layout_width="300dp"
@@ -36,9 +37,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="90dp"
+        />
 
     <EditText
+        android:drawableLeft="@drawable/baseline_edit_square_24"
         android:background="@drawable/menusetup"
         android:id="@+id/editTextPassword"
         android:layout_width="300dp"
@@ -60,7 +63,7 @@
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" >
+        app:layout_constraintBottom_toTopOf="@+id/textViewCreateUser" >
         <TextView
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -76,11 +79,12 @@
         android:id="@+id/textViewCreateUser"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="Увійти в обліковий запис"
-        app:layout_constraintTop_toBottomOf="@+id/button_SetIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="#C5C5C5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

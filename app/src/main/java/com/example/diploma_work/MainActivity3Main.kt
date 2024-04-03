@@ -13,6 +13,7 @@ class MainActivity3Main : AppCompatActivity() {
     private lateinit var binding: ActivityMainActivity3MainBinding
     private lateinit var db: UsersDataBaseHelper
     private lateinit var usersAdapter: UsersAdapter
+    private var adminId: Int = -1
 
     private lateinit var statistics: Button
     private lateinit var profile: Button
@@ -23,9 +24,11 @@ class MainActivity3Main : AppCompatActivity() {
         binding = ActivityMainActivity3MainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adminId = intent.getIntExtra("ADMIN_ID", -1)
 
         db = UsersDataBaseHelper(this)
-        usersAdapter = UsersAdapter(db.getAllUsers(), this)
+
+        usersAdapter = UsersAdapter(db.getAllUsers(adminId), this, adminId)
 
         binding.UsersRecycleView.layoutManager = LinearLayoutManager(this)
         binding.UsersRecycleView.adapter = usersAdapter
@@ -36,22 +39,28 @@ class MainActivity3Main : AppCompatActivity() {
 
         addUser.setOnClickListener {
             val intent = Intent(this, MainActivity3CreateUsers::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            finish()
         }
 
         profile.setOnClickListener {
-            startActivity(Intent(this, MainActivity4Profile::class.java))
+            val intent = Intent(this, MainActivity4Profile::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
+            startActivity(intent)
             finish()
         }
 
         statistics.setOnClickListener {
-            startActivity(Intent(this, MainActivity5Statistic::class.java))
+            val intent = Intent(this, MainActivity5Statistic::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
+            startActivity(intent)
             finish()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        usersAdapter.refreshData(db.getAllUsers())
+        usersAdapter.refreshData(db.getAllUsers(adminId))
     }
 }

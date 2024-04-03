@@ -8,6 +8,7 @@ import com.example.diploma_work.databinding.ActivityAddUserBinding
 class AddUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddUserBinding
     private lateinit var db: UsersDataBaseHelper
+    private val defaultAdminId = 1 // Set a default adminId here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +25,10 @@ class AddUserActivity : AppCompatActivity() {
             val timeString = binding.timeEditText1.text.toString()
             val duty = binding.dutyEditText4.text.toString()
 
-            val user = User(0, name,rank, father, surname, timeString, duty)
-            db.insertUser(user)
+            val user = User(0, rank, name, father, surname, timeString, duty)
+            db.insertUser(user, defaultAdminId) // Pass the default adminId
             finish()
-            Toast.makeText(this, "User Saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Користувач збережений", Toast.LENGTH_SHORT).show()
         }
-
     }
 }

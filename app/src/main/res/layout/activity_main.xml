@@ -26,6 +26,7 @@
 
     <EditText
         android:background="@drawable/menusetup"
+        android:drawableLeft="@drawable/baseline_account_box_24"
         android:id="@+id/editTextName"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -39,6 +40,7 @@
         android:layout_marginTop="100dp"/>
 
     <EditText
+        android:drawableLeft="@drawable/baseline_edit_square_24"
         android:background="@drawable/menusetup"
         android:id="@+id/editTextPassword"
         android:layout_width="300dp"
@@ -60,7 +62,7 @@
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" >
+        app:layout_constraintBottom_toTopOf="@+id/textViewCreateUser" >
         <TextView
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -76,11 +78,12 @@
         android:id="@+id/textViewCreateUser"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="Немає облікового запису? Створіть його!"
-        app:layout_constraintTop_toBottomOf="@+id/button_SetIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="#C5C5C5"/>
 
 

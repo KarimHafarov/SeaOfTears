@@ -15,6 +15,7 @@ class MainActivity5Statistic : AppCompatActivity() {
     private lateinit var recyclerViewUsers: RecyclerView
     private lateinit var usersAdapter: UsersAdapter
     private lateinit var db: UsersDataBaseHelper
+    private var adminId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +27,17 @@ class MainActivity5Statistic : AppCompatActivity() {
         db = UsersDataBaseHelper(this)
 
         recyclerViewUsers.layoutManager = LinearLayoutManager(this)
-        usersAdapter = UsersAdapter(emptyList(), this)
+        usersAdapter = UsersAdapter(emptyList(), this, adminId) // Pass adminId here
         recyclerViewUsers.adapter = usersAdapter
+
+        adminId = intent.getIntExtra("ADMIN_ID", -1)
 
         buttonSearch.setOnClickListener {
             val query = editTextSearch.text.toString().trim()
             if (query.isNotEmpty()) {
                 searchUsers(query)
             } else {
-                Toast.makeText(this, "Please enter a search query", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Пусте поле", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -44,19 +47,21 @@ class MainActivity5Statistic : AppCompatActivity() {
 
         profile.setOnClickListener {
             val intent = Intent(this, MainActivity4Profile::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             finish()
         }
 
         maininfo.setOnClickListener {
             val intent = Intent(this, MainActivity3Main::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             finish()
         }
     }
 
     private fun searchUsers(query: String) {
-        val searchResults = db.searchUsers(query)
+        val searchResults = db.searchUsersByAdminId(query, adminId)
         usersAdapter.refreshData(searchResults)
     }
 }

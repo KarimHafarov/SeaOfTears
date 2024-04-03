@@ -1,62 +1,60 @@
 package com.example.diploma_work
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.diploma_work.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
+
+    private  lateinit var binding: ActivitySignUpBinding
+    private lateinit var dataBaseHelper: AdminDataBaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        dataBaseHelper = AdminDataBaseHelper(this)
 
-        val sp = getSharedPreferences("PC", Context.MODE_PRIVATE).edit()
+        binding.buttonSetIn.setOnClickListener{
+            val signupLogin = binding.editTextName.text.toString()
+            val signupPassword = binding.editTextPassword.text.toString()
 
-        val signin: TextView = findViewById(R.id.textViewCreateUser)
-        signin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+            if (signupPassword.length < 8) {
+                Toast.makeText(this, "Пароль повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
+            }
+            else if(signupLogin.length <8 ){
+                Toast.makeText(this, "Логін повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
 
-        val name: TextView = findViewById(R.id.editTextName)
-        val password: TextView = findViewById(R.id.editTextPassword)
-
-        val button: ConstraintLayout = findViewById(R.id.button_SetIn)
-        button.setOnClickListener {
-            when {
-                name.text.isEmpty() || name.text.contains("@") -> {
-                    Toast.makeText(this, "Invalid name", Toast.LENGTH_LONG).show()
-                }
-                password.text.isEmpty() || password.text.length < 8 -> {
-                    Toast.makeText(this, "Invalid password", Toast.LENGTH_LONG).show()
-                }
-                else -> {
-                    val currentUserID = FirebaseAuth.getInstance().currentUser?.uid
-
-                    val user = hashMapOf(
-                        "name" to name.text.toString(),
-                        "password" to password.text.toString(),
-                        "created_by" to currentUserID
-                    )
-
-                    FirebaseFirestore.getInstance().collection("users")
-                        .add(user)
-                        .addOnSuccessListener { documentReference ->
-                            sp.putString("Name", name.text.toString()).commit()
-
-                            startActivity(Intent(this, MainActivity2::class.java))
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(this, "Error, please try again", Toast.LENGTH_LONG).show()
-                        }
-                }
+            }
+            else {
+                signupDataBase(signupLogin, signupPassword)
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
+
+
+        binding.textViewCreateUser.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
+
+    private fun signupDataBase(login: String, password: String){
+        val insertedRowId = dataBaseHelper.insertAdmin(login, password)
+        if (insertedRowId != -1L){
+            Toast.makeText(this, "Реєстрація успішна", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            Toast.makeText(this, "Помилка при реєстрації", Toast.LENGTH_LONG).show()
+        }
+    }
+
 }
