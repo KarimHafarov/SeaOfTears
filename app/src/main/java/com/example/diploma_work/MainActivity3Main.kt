@@ -56,6 +56,7 @@ class MainActivity3Main : AppCompatActivity() {
             val intent = Intent(this, MainActivity4Profile::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
 
@@ -63,6 +64,7 @@ class MainActivity3Main : AppCompatActivity() {
             val intent = Intent(this, MainActivity5Statistic::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
     }

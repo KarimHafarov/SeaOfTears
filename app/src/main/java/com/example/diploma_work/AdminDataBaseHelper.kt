@@ -12,7 +12,7 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 21
+        private const val DATABASE_VERSION = 23
 
         const val TABLE_ADMIN = "admins"
         const val COLUMN_ADMIN_ID = "_id"

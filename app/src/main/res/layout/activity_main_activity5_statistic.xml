@@ -60,7 +60,7 @@
 
     <Button
         android:id="@+id/button_statistic"
-        android:layout_width="138dp"
+        android:layout_width="137dp"
         android:layout_height="60dp"
         android:background="@drawable/menusetup4"
         android:drawableTop="@drawable/baseline_content_paste_search_24"

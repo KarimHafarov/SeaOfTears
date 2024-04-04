@@ -18,7 +18,15 @@ object ExcelExporter {
         val workbook = HSSFWorkbook()
         val sheet = workbook.createSheet("User Data")
 
-        var rowNumber = 0
+        val headerRow: Row = sheet.createRow(0)
+        headerRow.createCell(0).setCellValue("Звання")
+        headerRow.createCell(1).setCellValue("Прізвище")
+        headerRow.createCell(2).setCellValue("Ім'я")
+        headerRow.createCell(3).setCellValue("По батькові")
+        headerRow.createCell(4).setCellValue("Години")
+        headerRow.createCell(5).setCellValue("Наряди")
+
+        var rowNumber = 1
         for (user in userList) {
             val row: Row = sheet.createRow(rowNumber++)
             var cellNumber = 0

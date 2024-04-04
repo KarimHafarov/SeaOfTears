@@ -12,7 +12,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 21
+        private const val DATABASE_VERSION = 23
         const val TABLE_NAME = "users"
         const val COLUMN_ID = "_id"
         const val COLUMN_RANK = "rank"
@@ -216,8 +216,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         val users = mutableListOf<User>()
         val db = readableDatabase
 
-        // Modify the selection criteria to search in both name and surname columns
-        val selection = "$COLUMN_NAME LIKE ? OR $COLUMN_SURNAME LIKE ? AND $COLUMN_ADMIN_ID = ?"
+        val selection = "($COLUMN_NAME LIKE ? OR $COLUMN_SURNAME LIKE ?) AND $COLUMN_ADMIN_ID = ?"
         val selectionArgs = arrayOf("%$query%", "%$query%", adminId.toString())
 
         val cursor = db.query(

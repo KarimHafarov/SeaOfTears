@@ -27,7 +27,7 @@ class MainActivity5Statistic : AppCompatActivity() {
         db = UsersDataBaseHelper(this)
 
         recyclerViewUsers.layoutManager = LinearLayoutManager(this)
-        usersAdapter = UsersAdapter(emptyList(), this, adminId) // Pass adminId here
+        usersAdapter = UsersAdapter(emptyList(), this, adminId)
         recyclerViewUsers.adapter = usersAdapter
 
         adminId = intent.getIntExtra("ADMIN_ID", -1)
@@ -49,6 +49,7 @@ class MainActivity5Statistic : AppCompatActivity() {
             val intent = Intent(this, MainActivity4Profile::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
 
@@ -56,6 +57,7 @@ class MainActivity5Statistic : AppCompatActivity() {
             val intent = Intent(this, MainActivity3Main::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
     }
