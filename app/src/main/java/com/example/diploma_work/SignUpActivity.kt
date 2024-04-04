@@ -41,6 +41,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.textViewCreateUser.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_up)
             finish()
         }
     }
