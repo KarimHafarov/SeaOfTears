@@ -1,15 +1,19 @@
 package com.example.diploma_work
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.diploma_work.databinding.ActivityMainActivity5StatisticBinding
 
 class MainActivity5Statistic : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainActivity5StatisticBinding
     private lateinit var editTextSearch: EditText
     private lateinit var buttonSearch: Button
     private lateinit var recyclerViewUsers: RecyclerView
@@ -19,11 +23,12 @@ class MainActivity5Statistic : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_activity5_statistic)
+        binding = ActivityMainActivity5StatisticBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        editTextSearch = findViewById(R.id.editTextSearch)
-        buttonSearch = findViewById(R.id.buttonSearch)
-        recyclerViewUsers = findViewById(R.id.recyclerViewUsers)
+        editTextSearch = binding.editTextSearch
+        buttonSearch = binding.buttonSearch
+        recyclerViewUsers = binding.recyclerViewUsers
         db = UsersDataBaseHelper(this)
 
         recyclerViewUsers.layoutManager = LinearLayoutManager(this)
@@ -41,9 +46,9 @@ class MainActivity5Statistic : AppCompatActivity() {
             }
         }
 
-        val maininfo: Button = findViewById<Button>(R.id.button_main)
-        val statistics: Button = findViewById<Button>(R.id.button_statistic)
-        val profile: Button = findViewById<Button>(R.id.button_profile)
+        val maininfo: Button = findViewById(R.id.button_main)
+        val statistics: Button = findViewById(R.id.button_statistic)
+        val profile: Button = findViewById(R.id.button_profile)
 
         profile.setOnClickListener {
             val intent = Intent(this, MainActivity4Profile::class.java)
@@ -60,6 +65,9 @@ class MainActivity5Statistic : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
+
+        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(usersAdapter, this))
+        itemTouchHelper.attachToRecyclerView(recyclerViewUsers)
     }
 
     private fun searchUsers(query: String) {

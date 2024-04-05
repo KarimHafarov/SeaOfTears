@@ -21,8 +21,7 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
         val rankTextView: TextView = itemView.findViewById(R.id.RankTextView)
         val fatherTextView: TextView = itemView.findViewById(R.id.fathernameTextView)
         val dutyTextView: TextView = itemView.findViewById(R.id.dutyTextView)
-        val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
-        val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
+        val pinnedButton: ImageView = itemView.findViewById(R.id.pinnedButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -41,20 +40,28 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
         holder.timeTextView.text = user.time
         holder.dutyTextView.text = user.duty
 
-        holder.updateButton.setOnClickListener {
-            val intent = Intent(context, UpdateUserActivity::class.java).apply {
-                putExtra("user_id", user.id)
-            }
-            context.startActivity(intent)
-        }
-
-        holder.deleteButton.setOnClickListener {
-            db.deleteUser(user.id.toInt())
-            refreshData(db.getAllUsers(adminId))
-            Toast.makeText(context, "Користувача видалено", Toast.LENGTH_LONG).show()
+        holder.pinnedButton.setOnClickListener {
+            val pinnedUser = users[position]
+            val updatedList = users.toMutableList()
+            updatedList.removeAt(position)
+            updatedList.add(0, pinnedUser)
+            users = updatedList.toList()
+            notifyDataSetChanged()
+            Toast.makeText(context, "User pinned", Toast.LENGTH_SHORT).show()
         }
     }
 
+    fun getUserAtPosition(position: Int): User {
+        return users[position]
+    }
+
+    fun deleteUser(position: Int) {
+        users = users.filterIndexed { index, _ -> index != position }
+    }
+
+    fun deleteUserFromDatabase(userId: Int) {
+        db.deleteUser(userId)
+    }
 
     fun refreshData(newUsers: List<User>) {
         users = newUsers

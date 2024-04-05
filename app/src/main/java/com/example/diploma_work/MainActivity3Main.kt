@@ -1,4 +1,3 @@
-
 package com.example.diploma_work
 
 import android.content.Intent
@@ -6,7 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.diploma_work.databinding.ActivityMainActivity3MainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
@@ -67,6 +69,9 @@ class MainActivity3Main : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
+
+        val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(usersAdapter, this))
+        itemTouchHelper.attachToRecyclerView(binding.UsersRecycleView)
     }
 
     private fun exportDataToExcel() {

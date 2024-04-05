@@ -22,13 +22,15 @@ class SignUpActivity : AppCompatActivity() {
             val signupLogin = binding.editTextName.text.toString()
             val signupPassword = binding.editTextPassword.text.toString()
 
-            if (signupPassword.length < 8) {
+
+
+            if(signupLogin.length <8 ){
+                Toast.makeText(this, "Логін повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
+            }
+            else if (signupPassword.length < 8) {
                 Toast.makeText(this, "Пароль повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
             }
-            else if(signupLogin.length <8 ){
-                Toast.makeText(this, "Логін повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
 
-            }
             else {
                 signupDataBase(signupLogin, signupPassword)
                 val intent = Intent(this, MainActivity::class.java)
