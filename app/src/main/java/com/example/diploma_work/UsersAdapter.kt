@@ -32,24 +32,27 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
     override fun getItemCount(): Int = users.size
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user = users[position]
-        holder.rankTextView.text = user.rank
-        holder.fatherTextView.text = user.father
-        holder.nameTextView.text = user.name
-        holder.surnameTextView.text = user.surname
-        holder.timeTextView.text = user.time
-        holder.dutyTextView.text = user.duty
+        if (position < users.size) {
+            val user = users[position]
+            holder.rankTextView.text = user.rank
+            holder.fatherTextView.text = user.father
+            holder.nameTextView.text = user.name
+            holder.surnameTextView.text = user.surname
+            holder.timeTextView.text = user.time
+            holder.dutyTextView.text = user.duty
 
-        holder.pinnedButton.setOnClickListener {
-            val pinnedUser = users[position]
-            val updatedList = users.toMutableList()
-            updatedList.removeAt(position)
-            updatedList.add(0, pinnedUser)
-            users = updatedList.toList()
-            notifyDataSetChanged()
-            Toast.makeText(context, "User pinned", Toast.LENGTH_SHORT).show()
+            holder.pinnedButton.setOnClickListener {
+                val pinnedUser = users[position]
+                val updatedList = users.toMutableList()
+                updatedList.removeAt(position)
+                updatedList.add(0, pinnedUser)
+                users = updatedList.toList()
+                notifyDataSetChanged()
+                Toast.makeText(context, "User pinned", Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
 
     fun getUserAtPosition(position: Int): User {
         return users[position]

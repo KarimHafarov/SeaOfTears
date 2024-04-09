@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -51,6 +50,7 @@ class MainActivity3Main : AppCompatActivity() {
             val intent = Intent(this, MainActivity3CreateUsers::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
 
