@@ -9,7 +9,7 @@ import android.widget.Toast
 
 class MainActivity3CreateUsers : AppCompatActivity() {
     private lateinit var db: UsersDataBaseHelper
-    private var adminId: Int = -1
+    private var adminId: Int = -1 // Поле для збереження ідентифікатора адміна
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

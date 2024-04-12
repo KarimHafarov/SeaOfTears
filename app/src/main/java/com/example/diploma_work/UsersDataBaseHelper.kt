@@ -12,8 +12,8 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 23
-        const val TABLE_NAME = "users"
+        private const val DATABASE_VERSION = 28
+        const val TABLE_NAME = "user"
         const val COLUMN_ID = "_id"
         const val COLUMN_RANK = "rank"
         const val COLUMN_NAME = "name"
@@ -41,13 +41,11 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         db.execSQL(createTableQuery)
     }
 
-
-
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         val dropUserTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
         db.execSQL(dropUserTableQuery)
         onCreate(db)
-        if (oldVersion < 16) {
+        if (oldVersion < 27) {
             val addAdminIdColumnQuery = "ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_ADMIN_ID INTEGER"
             db.execSQL(addAdminIdColumnQuery)
         }
@@ -144,6 +142,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         db.update(TABLE_NAME, values, whereClause, whereArgs)
         db.close()
     }
+
 
     fun getAllUsers(adminId: Int): List<User> {
         val users = mutableListOf<User>()
@@ -248,5 +247,4 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
         return users
     }
-
 }

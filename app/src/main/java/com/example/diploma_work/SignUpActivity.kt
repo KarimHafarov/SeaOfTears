@@ -8,37 +8,32 @@ import com.example.diploma_work.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
 
-    private  lateinit var binding: ActivitySignUpBinding
-    private lateinit var dataBaseHelper: AdminDataBaseHelper
+    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var adminDataBaseHelper: AdminDataBaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dataBaseHelper = AdminDataBaseHelper(this)
+        adminDataBaseHelper = AdminDataBaseHelper(this)
 
-        binding.buttonSetIn.setOnClickListener{
+        binding.buttonSetIn.setOnClickListener {
             val signupLogin = binding.editTextName.text.toString()
             val signupPassword = binding.editTextPassword.text.toString()
 
-
-
-            if(signupLogin.length <8 ){
-                Toast.makeText(this, "Логін повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
-            }
-            else if (signupPassword.length < 8) {
+            if (signupLogin.length < 5) {
+                Toast.makeText(this, "Логін повинен містити принаймні 5 символів", Toast.LENGTH_SHORT).show()
+            } else if (signupPassword.length < 8) {
                 Toast.makeText(this, "Пароль повинен містити принаймні 8 символів", Toast.LENGTH_SHORT).show()
-            }
-
-            else {
-                signupDataBase(signupLogin, signupPassword)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+            } else {
+                if (adminDataBaseHelper.isLoginExists(signupLogin)) {
+                    Toast.makeText(this, "Цей логін вже використовується.", Toast.LENGTH_SHORT).show()
+                } else {
+                    signUpDataBase(signupLogin, signupPassword)
+                }
             }
         }
-
 
         binding.textViewCreateUser.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -48,9 +43,9 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun signupDataBase(login: String, password: String){
-        val insertedRowId = dataBaseHelper.insertAdmin(login, password)
-        if (insertedRowId != -1L){
+    private fun signUpDataBase(login: String, password: String) {
+        val insertedRowId = adminDataBaseHelper.insertAdmin(login, password)
+        if (insertedRowId != -1L) {
             Toast.makeText(this, "Реєстрація успішна", Toast.LENGTH_LONG).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

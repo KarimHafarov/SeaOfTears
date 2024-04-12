@@ -12,7 +12,7 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 23
+        private const val DATABASE_VERSION = 28
 
         const val TABLE_ADMIN = "admins"
         const val COLUMN_ADMIN_ID = "_id"
@@ -117,5 +117,24 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
         db.close()
 
         return admin
+    }
+
+    fun isLoginExists(login: String): Boolean {
+        val db = readableDatabase
+        val selection = "$COLUMN_ADMIN_LOGIN = ?"
+        val selectionArgs = arrayOf(login)
+        val cursor: Cursor = db.query(
+            TABLE_ADMIN,
+            null,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+        val isExists = cursor.count > 0
+        cursor.close()
+        db.close()
+        return isExists
     }
 }
