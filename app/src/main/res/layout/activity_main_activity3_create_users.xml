@@ -27,6 +27,8 @@
         android:id="@+id/imageView_photo"
         android:layout_width="140dp"
         android:layout_height="140dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="5dp"
         android:src="@drawable/imglogo2"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
