@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1D1D1"
+    android:background="#FFFFFF"
     tools:context=".MainActivity4Profile">
 
 
@@ -24,7 +24,7 @@
             android:id="@+id/logophoto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/imglogo121" />
+            android:src="@drawable/imglogo2" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -35,7 +35,7 @@
         android:gravity="center"
         android:textSize="36dp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,11 +43,11 @@
 
     <Button
         android:id="@+id/buttonLogOut"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/menusetup"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
-        android:text="Вийти з облікового запису"
+        android:text="    Вийти з облікового запису    "
         app:layout_goneMarginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
