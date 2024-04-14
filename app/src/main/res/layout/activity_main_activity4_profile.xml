@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4A8557"
+    android:background="#D1D1D1"
     tools:context=".MainActivity4Profile">
 
 
@@ -15,6 +15,7 @@
         android:layout_height="170dp"
         android:layout_marginTop="130dp"
         app:cardCornerRadius="24dp"
+        app:cardElevation="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,26 +24,27 @@
             android:id="@+id/logophoto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/logopersona" />
+            android:src="@drawable/imglogo121" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/nameemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="348dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="24dp"
+        android:textSize="36dp"
+        android:textStyle="bold"
         android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/buttonLogOut"
         android:backgroundTint="@color/white"
-        android:layout_width="190dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:text="Вийти з облікового запису"
@@ -64,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:drawableTop="@drawable/baseline_content_paste_search_24"
+        android:drawableTop="@drawable/baseline_content_paste_search_1"
         android:background="@drawable/menusetup3"
         android:id="@+id/button_statistic"
         android:layout_width="138dp"
@@ -76,13 +78,13 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:drawableTop="@drawable/baseline_account"
+        android:drawableTop="@drawable/baseline_account2"
         android:background="@drawable/menusetup4"
         android:id="@+id/button_profile"
         android:layout_width="137dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="#A3A3A3"
         android:text="Профіль"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

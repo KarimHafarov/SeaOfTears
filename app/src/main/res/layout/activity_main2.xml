@@ -10,21 +10,20 @@
         android:id="@+id/nameemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="392dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="24dp"
+        android:textSize="38dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome"/>
 
     <TextView
         android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="324dp"
-        android:text="Вітаю!"
-        android:textSize="30dp"
+        android:layout_marginTop="250dp"
+        android:text="Вітаю,"
+        android:textSize="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,24 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity3CreateUsers"
-    android:background="@drawable/menusetup4">
+    android:background="#D1D1D1">
 
-    <Button
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_close"
-        android:background="@drawable/menusetup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="#232323"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Назад"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        android:contentDescription="Move to another screen"/>
+
 
     <ImageView
         android:id="@+id/imageView_photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logopersona"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/imglogo2"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Звання"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/imageView_photo"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Прізвище"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/imageView_photo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +63,7 @@
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть звання"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_rank"
@@ -70,7 +75,7 @@
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть ім'я"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/textView_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ім'я"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/editText_rank"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +101,7 @@
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть прізвище"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_surname"
@@ -108,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="По-батькові"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/editText_surname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +125,7 @@
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть по-батькові"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:gravity="center"
         android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,15 +134,19 @@
         android:layout_marginEnd="10dp"/>
 
 
-    <Button
-        android:background="@drawable/menusetup2"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Зберегти"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="#232323"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="50dp"/>
+        app:srcCompat="@drawable/baseline_done_24"
+        android:contentDescription="Move to another screen"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

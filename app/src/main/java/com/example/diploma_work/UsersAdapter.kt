@@ -4,22 +4,41 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.diploma_work.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class UsersAdapter(private var users: List<User>, private val context: Context, private val adminId: Int) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private val db: UsersDataBaseHelper = UsersDataBaseHelper(context)
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         val surnameTextView: TextView = itemView.findViewById(R.id.surnameTextView)
-        val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         val rankTextView: TextView = itemView.findViewById(R.id.RankTextView)
         val fatherTextView: TextView = itemView.findViewById(R.id.fathernameTextView)
-        val dutyTextView: TextView = itemView.findViewById(R.id.dutyTextView)
+
+        init {
+            itemView.setOnLongClickListener {
+                val position = adapterPosition
+                val user = getUserAtPosition(position)
+
+                val bottomSheetDialog = BottomSheetDialog(itemView.context)
+                val view = LayoutInflater.from(itemView.context).inflate(R.layout.bottom_sheet_layout, null)
+
+                view.findViewById<TextView>(R.id.bottomSheetRankTextView).text = user.rank
+                view.findViewById<TextView>(R.id.bottomSheetSurnameTextView).text = user.surname
+                view.findViewById<TextView>(R.id.bottomSheetTimeTextView).text = user.time
+                view.findViewById<TextView>(R.id.bottomSheetDutyTextView).text = user.duty
+
+                bottomSheetDialog.setContentView(view)
+                bottomSheetDialog.show()
+
+                true
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -36,8 +55,6 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
         holder.fatherTextView.text = user.father
         holder.nameTextView.text = user.name
         holder.surnameTextView.text = user.surname
-        holder.timeTextView.text = user.time
-        holder.dutyTextView.text = user.duty
     }
 
     fun getUserAtPosition(position: Int): User {

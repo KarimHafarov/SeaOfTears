@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         dataBaseHelper = AdminDataBaseHelper(this)
 
+        val usersDataBaseHelper = UsersDataBaseHelper(this)
+        usersDataBaseHelper.writableDatabase
+
         binding.buttonSetIn.setOnClickListener {
             val loginLogin = binding.editTextName.text.toString()
             val loginPassword = binding.editTextPassword.text.toString()

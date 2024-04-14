@@ -3,13 +3,13 @@ package com.example.diploma_work
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity3CreateUsers : AppCompatActivity() {
     private lateinit var db: UsersDataBaseHelper
-    private var adminId: Int = -1 // Поле для збереження ідентифікатора адміна
+    private var adminId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +17,12 @@ class MainActivity3CreateUsers : AppCompatActivity() {
 
         db = UsersDataBaseHelper(this)
 
-        val backtoMain: Button = findViewById(R.id.button_close)
+        val backtoMain: FloatingActionButton = findViewById(R.id.button_close)
         val rankus: EditText = findViewById(R.id.editText_rank)
         val nameus: EditText = findViewById(R.id.editText_name)
         val fathernameus: EditText = findViewById(R.id.editText_fathername)
         val surnameus: EditText = findViewById(R.id.editText_surname)
-        val button_save: Button = findViewById(R.id.button_save)
+        val button_save: FloatingActionButton = findViewById(R.id.button_save)
 
         adminId = intent.getIntExtra("ADMIN_ID", -1)
 
@@ -30,6 +30,7 @@ class MainActivity3CreateUsers : AppCompatActivity() {
             val intent = Intent(this, MainActivity3Main::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
 
@@ -50,7 +51,7 @@ class MainActivity3CreateUsers : AppCompatActivity() {
                     val intent = Intent(this, MainActivity3Main::class.java)
                     intent.putExtra("ADMIN_ID", adminId)
                     startActivity(intent)
-
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                 }
             }

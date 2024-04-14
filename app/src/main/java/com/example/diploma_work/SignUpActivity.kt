@@ -18,6 +18,9 @@ class SignUpActivity : AppCompatActivity() {
 
         adminDataBaseHelper = AdminDataBaseHelper(this)
 
+        val usersDataBaseHelper = UsersDataBaseHelper(this)
+        usersDataBaseHelper.writableDatabase
+
         binding.buttonSetIn.setOnClickListener {
             val signupLogin = binding.editTextName.text.toString()
             val signupPassword = binding.editTextPassword.text.toString()

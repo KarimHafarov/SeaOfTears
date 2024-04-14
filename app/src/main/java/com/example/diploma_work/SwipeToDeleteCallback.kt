@@ -13,7 +13,7 @@ import com.example.diploma_work.UsersAdapter
 
 class SwipeToDeleteCallback(private val adapter: UsersAdapter, private val context: Context) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
-    private val deleteIcon: Drawable? = ContextCompat.getDrawable(context, R.drawable.baseline_delete_24)
+    private val deleteIcon: Drawable? = ContextCompat.getDrawable(context, R.drawable.baseline_delete)
     private val updateIcon: Drawable? = ContextCompat.getDrawable(context, R.drawable.baseline_edit_24)
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {

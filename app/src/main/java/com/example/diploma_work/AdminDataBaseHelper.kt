@@ -11,10 +11,10 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
 ) {
 
     companion object {
-        private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 28
+        private const val DATABASE_NAME = "admin.db"
+        private const val DATABASE_VERSION = 29
 
-        const val TABLE_ADMIN = "admins"
+        const val TABLE_ADMIN = "admin"
         const val COLUMN_ADMIN_ID = "_id"
         const val COLUMN_ADMIN_LOGIN = "login"
         const val COLUMN_ADMIN_PASSWORD = "password"
@@ -29,7 +29,13 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
             )
         """.trimIndent()
 
-        db.execSQL(createAdminTableQuery)
+        db.execSQL(createAdminTableQuery) // Створення таблиці admin
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        val dropAdminTableQuery = "DROP TABLE IF EXISTS $TABLE_ADMIN"
+        db.execSQL(dropAdminTableQuery)
+        onCreate(db)
     }
 
     fun insertAdmin(username: String, password: String): Long {
@@ -92,11 +98,7 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
         return admin
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        val dropAdminTableQuery = "DROP TABLE IF EXISTS $TABLE_ADMIN"
-        db.execSQL(dropAdminTableQuery)
-        onCreate(db)
-    }
+
 
     fun getAdminById(adminId: Int): Admin? {
         val db = readableDatabase

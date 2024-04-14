@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
@@ -12,7 +13,7 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "users.db"
-        private const val DATABASE_VERSION = 28
+        private const val DATABASE_VERSION = 29
         const val TABLE_NAME = "user"
         const val COLUMN_ID = "_id"
         const val COLUMN_RANK = "rank"
@@ -26,19 +27,19 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTableQuery = """
-    CREATE TABLE $TABLE_NAME (
-        $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        $COLUMN_RANK TEXT,
-        $COLUMN_NAME TEXT,
-        $COLUMN_FATHER TEXT,
-        $COLUMN_SURNAME TEXT,
-        $COLUMN_TIME TEXT,
-        $COLUMN_DUTY TEXT,
-        $COLUMN_ADMIN_ID INTEGER
-    )
-    """.trimIndent()
+            CREATE TABLE $TABLE_NAME (
+                $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COLUMN_RANK TEXT,
+                $COLUMN_NAME TEXT,
+                $COLUMN_FATHER TEXT,
+                $COLUMN_SURNAME TEXT,
+                $COLUMN_TIME TEXT,
+                $COLUMN_DUTY TEXT,
+                $COLUMN_ADMIN_ID INTEGER
+            )
+        """.trimIndent()
 
-        db.execSQL(createTableQuery)
+        db.execSQL(createTableQuery) // Створення таблиці user
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

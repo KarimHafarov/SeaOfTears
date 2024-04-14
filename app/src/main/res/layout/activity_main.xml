@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4A8557"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -13,6 +13,7 @@
         android:layout_height="170dp"
         android:layout_marginTop="170dp"
         app:cardCornerRadius="24dp"
+        app:cardElevation="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,7 +22,7 @@
             android:id="@+id/logophoto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/logopersona" />
+            android:src="@drawable/imglogo2" />
     </androidx.cardview.widget.CardView>
 
     <EditText
@@ -29,7 +30,7 @@
         android:drawableLeft="@drawable/baseline_account_box_24"
         android:id="@+id/editTextName"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:paddingStart="15dp"
         android:ems="10"
         android:inputType="text"
@@ -44,7 +45,7 @@
         android:background="@drawable/menusetup"
         android:id="@+id/editTextPassword"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:paddingStart="15dp"
         android:ems="10"
         android:inputType="textPassword"
@@ -58,7 +59,7 @@
         android:background="@drawable/menusetup2"
         android:id="@+id/button_SetIn"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="#C5C5C5"/>
+        android:textColor="#656565"/>
 
 
 
