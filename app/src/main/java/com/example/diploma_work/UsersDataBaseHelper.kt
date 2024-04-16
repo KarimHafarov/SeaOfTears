@@ -48,10 +48,6 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         val dropUserTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
         db.execSQL(dropUserTableQuery)
         onCreate(db)
-        if (oldVersion < 27) {
-            val addAdminIdColumnQuery = "ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_ADMIN_ID INTEGER"
-            db.execSQL(addAdminIdColumnQuery)
-        }
     }
 
     fun insertUser(user: User, adminId: Int) {
