@@ -1,9 +1,12 @@
 package com.example.diploma_work
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.view.LayoutInflater
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -25,14 +28,36 @@ class SwipeToDeleteCallback(private val adapter: UsersAdapter, private val conte
         val user = adapter.getUserAtPosition(position)
 
         if (direction == ItemTouchHelper.LEFT) {
-            adapter.deleteUser(position)
-            adapter.notifyItemRemoved(position)
-
-            adapter.deleteUserFromDatabase(user.id)
+            showDeleteConfirmationDialog(user, position)
         } else if (direction == ItemTouchHelper.RIGHT) {
             val intent = Intent(context, UpdateUserActivity::class.java)
             intent.putExtra("user_id", user.id)
             context.startActivity(intent)
+        }
+    }
+
+    private fun showDeleteConfirmationDialog(user: User, position: Int) {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_confirm_delete, null)
+        val dialogBuilder = AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(false)
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+
+        val btnYes = dialogView.findViewById<Button>(R.id.btn_yes)
+        val btnNo = dialogView.findViewById<Button>(R.id.btn_no)
+
+        btnYes.setOnClickListener {
+            adapter.deleteUser(position)
+            adapter.notifyItemRemoved(position)
+            adapter.deleteUserFromDatabase(user.id)
+            alertDialog.dismiss()
+        }
+
+        btnNo.setOnClickListener {
+            adapter.notifyItemChanged(position)
+            alertDialog.dismiss()
         }
     }
 

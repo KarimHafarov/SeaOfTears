@@ -10,7 +10,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="Diploma work"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/dipploma"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:targetApi="31">
