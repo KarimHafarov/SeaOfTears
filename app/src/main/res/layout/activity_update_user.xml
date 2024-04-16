@@ -144,4 +144,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         android:inputType="number"/>
 
+
+    <TextView
+        android:id="@+id/commenttextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Примітки : "
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/timeEditText1"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTextComment"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Введіть примітки"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/commenttextView"
+        app:layout_constraintTop_toBottomOf="@id/timeEditText1"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

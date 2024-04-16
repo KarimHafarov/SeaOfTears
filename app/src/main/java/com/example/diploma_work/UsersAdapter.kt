@@ -32,6 +32,7 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
                 view.findViewById<TextView>(R.id.bottomSheetSurnameTextView).text = user.surname
                 view.findViewById<TextView>(R.id.bottomSheetTimeTextView).text = user.time
                 view.findViewById<TextView>(R.id.bottomSheetDutyTextView).text = user.duty
+                view.findViewById<TextView>(R.id.bottomSheetCommentTextView).text = user.comment
 
                 bottomSheetDialog.setContentView(view)
                 bottomSheetDialog.show()

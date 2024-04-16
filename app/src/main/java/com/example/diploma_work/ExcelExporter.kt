@@ -25,6 +25,7 @@ object ExcelExporter {
         headerRow.createCell(3).setCellValue("По батькові")
         headerRow.createCell(4).setCellValue("Години")
         headerRow.createCell(5).setCellValue("Наряди")
+        headerRow.createCell(6).setCellValue("Примітки")
 
         var rowNumber = 1
         for (user in userList) {
@@ -36,6 +37,7 @@ object ExcelExporter {
             row.createCell(cellNumber++).setCellValue(user.father)
             row.createCell(cellNumber++).setCellValue(user.time)
             row.createCell(cellNumber++).setCellValue(user.duty)
+            row.createCell(cellNumber++).setCellValue(user.comment)
         }
 
         return try {

@@ -45,7 +45,7 @@ class MainActivity3CreateUsers : AppCompatActivity() {
                 name.isEmpty() -> Toast.makeText(this, "Введіть ім'я", Toast.LENGTH_SHORT).show()
                 surname.isEmpty() -> Toast.makeText(this, "Введіть прізвище", Toast.LENGTH_SHORT).show()
                 else -> {
-                    val user = User(0, rank, name, fathername, surname, "", "")
+                    val user = User(0, rank, name, fathername, surname, "", "", "")
                     db.insertUser(user, adminId)
                     Toast.makeText(this, "Користувач збережений успішно", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity3Main::class.java)

@@ -1,6 +1,7 @@
 package com.example.diploma_work
 
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.diploma_work.databinding.ActivityUpdateUserBinding
@@ -35,6 +36,7 @@ class UpdateUserActivity : AppCompatActivity() {
         binding.updateEditText1.setText(user.surname)
         binding.timeEditText1.setText(user.time)
         binding.dutyEditText1.setText(user.duty)
+        binding.editTextComment.setText(user.comment)
 
         binding.updateimageView.setOnClickListener {
             val newRank = binding.updateEditText2.text.toString()
@@ -43,7 +45,8 @@ class UpdateUserActivity : AppCompatActivity() {
             val newSurname = binding.updateEditText1.text.toString()
             val newTime = binding.timeEditText1.text.toString()
             val newDuty = binding.dutyEditText1.text.toString()
-            val updatedUser = User(userId,newRank, newName, newFather, newSurname, newTime, newDuty)
+            val newComment = binding.editTextComment.text.toString()
+            val updatedUser = User(userId,newRank, newName, newFather, newSurname, newTime, newDuty, newComment)
 
             db.updateUser(updatedUser)
             finish()

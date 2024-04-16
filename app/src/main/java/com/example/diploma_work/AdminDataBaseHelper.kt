@@ -12,7 +12,7 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     companion object {
         private const val DATABASE_NAME = "admin.db"
-        private const val DATABASE_VERSION = 29
+        private const val DATABASE_VERSION = 30
 
         const val TABLE_ADMIN = "admin"
         const val COLUMN_ADMIN_ID = "_id"
@@ -29,7 +29,7 @@ class AdminDataBaseHelper(context: Context) : SQLiteOpenHelper(
             )
         """.trimIndent()
 
-        db.execSQL(createAdminTableQuery) // Створення таблиці admin
+        db.execSQL(createAdminTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
