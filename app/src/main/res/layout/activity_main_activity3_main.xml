@@ -53,42 +53,56 @@
 
 
     <Button
-        android:drawableTop="@drawable/baseline_main2"
-        android:background="@drawable/menusetup4"
         android:id="@+id/button_main"
-        android:layout_width="137dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
+        android:background="@drawable/menusetup4"
+        android:drawableTop="@drawable/baseline_main2"
         android:gravity="center"
-        android:textColor="#A3A3A3"
         android:text="Головна"
+        android:textColor="#A3A3A3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/button_statistic"
-        android:layout_width="137dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/menusetup3"
         android:drawableTop="@drawable/baseline_content_paste_search_1"
         android:gravity="center"
         android:text="Пошук"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_profile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button_main" />
-
-    <Button
-        android:drawableTop="@drawable/baseline_account"
-        android:background="@drawable/menusetup3"
-        android:id="@+id/button_profile"
-        android:layout_width="137dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Профіль"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_main"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <Button
+        android:id="@+id/button_profile"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/menusetup3"
+        android:drawableTop="@drawable/baseline_account"
+        android:gravity="center"
+        android:text="Профіль"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

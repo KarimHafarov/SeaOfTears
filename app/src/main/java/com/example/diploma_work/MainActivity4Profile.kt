@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import android.net.Uri
 
 class MainActivity4Profile : AppCompatActivity() {
 
@@ -30,6 +31,11 @@ class MainActivity4Profile : AppCompatActivity() {
         val mainInfo: Button = findViewById(R.id.button_main)
         val statistics: Button = findViewById(R.id.button_statistic)
         val profile: Button = findViewById(R.id.button_profile)
+
+        val linkTextView = findViewById<TextView>(R.id.linkTextView)
+        linkTextView.setOnClickListener {
+            openLink()
+        }
 
         mainInfo.setOnClickListener {
             val intent = Intent(this, MainActivity3Main::class.java)
@@ -61,6 +67,13 @@ class MainActivity4Profile : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+
+    }
+
+    private fun openLink() {
+        val uri = Uri.parse("https://forms.gle/igzSo7WxYrgyoHNb7")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
     }
 
     private fun readLoginFromDatabase(): String? {
@@ -72,6 +85,7 @@ class MainActivity4Profile : AppCompatActivity() {
             null
         }
     }
+
 
 
 

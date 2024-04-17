@@ -13,12 +13,11 @@
         android:id="@+id/cardView"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_marginTop="130dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
 
         <ImageView
             android:id="@+id/logophoto"
@@ -88,4 +87,34 @@
         android:text="Профіль"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <TextView
+        android:id="@+id/linkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Залиште відгук або \n повідомте про несправність"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:autoLink="web"
+        android:textColorLink="@color/blue"
+        android:clickable="true"
+        android:onClick="onLinkClicked"
+        app:layout_constraintTop_toBottomOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
