@@ -22,6 +22,7 @@ class MainActivity3Main : AppCompatActivity() {
     private lateinit var statistics: Button
     private lateinit var profile: Button
     private lateinit var addUser: FloatingActionButton
+    private lateinit var graphic: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class MainActivity3Main : AppCompatActivity() {
         addUser = findViewById(R.id.add_user)
         profile = findViewById(R.id.button_profile)
         statistics = findViewById(R.id.button_statistic)
+        graphic = findViewById(R.id.button_graphic)
 
         val exportExcelButton: Button = findViewById(R.id.export_excel_button)
         exportExcelButton.setOnClickListener {
@@ -56,6 +58,14 @@ class MainActivity3Main : AppCompatActivity() {
 
         profile.setOnClickListener {
             val intent = Intent(this, MainActivity4Profile::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
+        }
+
+        graphic.setOnClickListener {
+            val intent = Intent(this, MainActivity6Graphic::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)

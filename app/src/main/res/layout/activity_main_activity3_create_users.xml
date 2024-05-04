@@ -60,26 +60,28 @@
         android:layout_marginEnd="70dp"/>
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:id="@+id/editText_rank"
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть звання"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_rank"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         android:layout_marginTop="5dp"
         android:layout_marginStart="10dp"/>
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:id="@+id/editText_name"
         android:layout_width="190dp"
         android:layout_height="70dp"
         android:hint="Введіть ім'я"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintTop_toBottomOf="@id/textView_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
@@ -100,10 +102,11 @@
         android:layout_marginStart="85dp"/>
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:id="@+id/editText_surname"
         android:layout_width="190dp"
         android:layout_height="70dp"
+        android:maxLines="1"
         android:hint="Введіть прізвище"
         android:textColor="@color/black"
         android:gravity="center"
@@ -132,7 +135,8 @@
         android:hint="Введіть по-батькові"
         android:textColor="@color/black"
         android:gravity="center"
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:maxLines="1"
+        android:inputType="textCapSentences|textAutoCorrect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_fathername"
         app:layout_constraintStart_toStartOf="@id/guideline"

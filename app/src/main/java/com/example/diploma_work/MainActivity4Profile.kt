@@ -31,6 +31,7 @@ class MainActivity4Profile : AppCompatActivity() {
         val mainInfo: Button = findViewById(R.id.button_main)
         val statistics: Button = findViewById(R.id.button_statistic)
         val profile: Button = findViewById(R.id.button_profile)
+        val graphic: Button = findViewById(R.id.button_graphic)
 
         val linkTextView = findViewById<TextView>(R.id.linkTextView)
         linkTextView.setOnClickListener {
@@ -47,6 +48,14 @@ class MainActivity4Profile : AppCompatActivity() {
 
         statistics.setOnClickListener {
             val intent = Intent(this, MainActivity5Statistic::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
+        }
+
+        graphic.setOnClickListener {
+            val intent = Intent(this, MainActivity6Graphic::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)

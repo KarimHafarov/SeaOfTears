@@ -4,53 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".MainActivity4Profile">
+    tools:context=".MainActivity6Graphic">
 
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3">
-
-        <ImageView
-            android:id="@+id/logophoto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/imglogo2" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/nameemail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textSize="36dp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <Button
-        android:id="@+id/buttonLogOut"
-        android:background="@drawable/menusetup"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
-        android:text="    Вийти з облікового запису    "
-        app:layout_goneMarginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameemail" />
 
     <Button
         android:id="@+id/button_main"
@@ -83,7 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/menusetup3"
-        android:drawableTop="@drawable/chart_bar"
+        android:drawableTop="@drawable/chart_bar2"
         android:gravity="center"
         android:text="Графік"
         android:textColor="@color/white"
@@ -96,7 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/menusetup3"
-        android:drawableTop="@drawable/baseline_account2"
+        android:drawableTop="@drawable/baseline_account"
         android:gravity="center"
         android:text="Профіль"
         android:textColor="@color/white"
@@ -125,33 +82,4 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
-
-    <TextView
-        android:id="@+id/linkTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Залиште відгук або \n повідомте про несправність"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:autoLink="web"
-        android:textColorLink="@color/blue"
-        android:clickable="true"
-        android:onClick="onLinkClicked"
-        app:layout_constraintTop_toBottomOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

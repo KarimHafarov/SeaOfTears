@@ -49,6 +49,7 @@ class MainActivity5Statistic : AppCompatActivity() {
         val maininfo: Button = findViewById(R.id.button_main)
         val statistics: Button = findViewById(R.id.button_statistic)
         val profile: Button = findViewById(R.id.button_profile)
+        val graphic: Button = findViewById(R.id.button_graphic)
 
         profile.setOnClickListener {
             val intent = Intent(this, MainActivity4Profile::class.java)
@@ -60,6 +61,14 @@ class MainActivity5Statistic : AppCompatActivity() {
 
         maininfo.setOnClickListener {
             val intent = Intent(this, MainActivity3Main::class.java)
+            intent.putExtra("ADMIN_ID", adminId)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
+        }
+
+        graphic.setOnClickListener {
+            val intent = Intent(this, MainActivity6Graphic::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)

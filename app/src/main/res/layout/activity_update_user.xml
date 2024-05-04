@@ -11,20 +11,20 @@
         android:id="@+id/edittextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="40dp"
         android:text="Редагування користувача"
-        android:textSize="24dp"
         android:textColor="@color/black"
+        android:textSize="24dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintEnd_toStartOf="@id/updateimageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/updateimageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
         android:focusable="true"
@@ -35,7 +35,7 @@
         android:contentDescription="Move to another screen"/>
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText"
         android:layout_width="0dp"
@@ -44,43 +44,46 @@
         android:hint="Введіть ім'я"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         android:layout_marginStart="10dp"
         app:layout_constraintTop_toBottomOf="@+id/updateEditText2" />
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText2"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:hint="Введіть звання"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         android:layout_marginStart="10dp"
         app:layout_constraintTop_toBottomOf="@+id/edittextView" />
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText1"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:hint="Введіть прізвище"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="10dp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/edittextView" />
 
     <EditText
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:background="@drawable/menusetup"
         android:id="@+id/updateEditText3"
         android:layout_width="0dp"
@@ -89,6 +92,7 @@
         android:hint="Введіть по-батькові"
         android:textColor="@color/black"
         android:gravity="center"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="10dp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -117,6 +121,7 @@
         android:hint="Кількість годин"
         android:gravity="center"
         android:textColor="@color/black"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -144,6 +149,7 @@
         android:layout_marginEnd="10dp"
         android:hint="Кількість нарядів"
         android:gravity="center"
+        android:maxLines="1"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -165,6 +171,7 @@
 
     <EditText
         android:id="@+id/editTextComment"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:hint="Введіть примітки"
@@ -174,6 +181,20 @@
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toEndOf="@+id/commenttextView"
         app:layout_constraintTop_toBottomOf="@id/timeEditText1"/>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextComment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
