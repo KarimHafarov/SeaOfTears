@@ -3,6 +3,9 @@ package com.example.diploma_work
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import java.util.Date
+import java.text.SimpleDateFormat
+import java.util.Locale
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -68,39 +71,31 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
 
     fun searchUsers(query: String): List<User> {
         val users = mutableListOf<User>()
-        val db = readableDatabase
-        val selection = "$COLUMN_NAME LIKE ? OR $COLUMN_SURNAME LIKE ?"
-        val selectionArgs = arrayOf("%$query%", "%$query%")
-        val cursor = db.query(
-            TABLE_NAME,
-            null,
-            selection,
-            selectionArgs,
-            null,
-            null,
-            null
-        )
+        readableDatabase.use { db ->
+            val selection = "$COLUMN_NAME LIKE ? OR $COLUMN_SURNAME LIKE ?"
+            val selectionArgs = arrayOf("%$query%", "%$query%")
+            val cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
 
-        if (cursor.moveToFirst()) {
-            do {
-                val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
-                val rank = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RANK))
-                val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
-                val father = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FATHER))
-                val surname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SURNAME))
-                val time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME))
-                val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
-                val comment = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COMMENT))
-                val user = User(id, rank, name, father, surname, time, duty, comment)
-                users.add(user)
-            } while (cursor.moveToNext())
+            cursor.use {
+                if (it.moveToFirst()) {
+                    do {
+                        val id = it.getInt(it.getColumnIndexOrThrow(COLUMN_ID))
+                        val rank = it.getString(it.getColumnIndexOrThrow(COLUMN_RANK))
+                        val name = it.getString(it.getColumnIndexOrThrow(COLUMN_NAME))
+                        val father = it.getString(it.getColumnIndexOrThrow(COLUMN_FATHER))
+                        val surname = it.getString(it.getColumnIndexOrThrow(COLUMN_SURNAME))
+                        val time = it.getString(it.getColumnIndexOrThrow(COLUMN_TIME))
+                        val duty = it.getString(it.getColumnIndexOrThrow(COLUMN_DUTY))
+                        val comment = it.getString(it.getColumnIndexOrThrow(COLUMN_COMMENT))
+                        val user = User(id, rank, name, father, surname, time, duty, comment)
+                        users.add(user)
+                    } while (it.moveToNext())
+                }
+            }
         }
-
-        cursor.close()
-        db.close()
-
         return users
     }
+
 
     fun getUsersByAdminId(adminId: Int): List<User> {
         val users = mutableListOf<User>()
@@ -252,5 +247,87 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         db.close()
 
         return users
+    }
+
+    fun getDataForDateRange(userId: Int, startDate: String, endDate: String): List<Int> {
+        val data = mutableListOf<Int>()
+        val db = readableDatabase
+        val query =
+            "SELECT $COLUMN_DUTY FROM $TABLE_NAME WHERE $COLUMN_ID = $userId AND $COLUMN_TIME BETWEEN '$startDate' AND '$endDate'"
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
+                // В цьому прикладі, додамо кожен день обов'язків користувача до списку даних
+                // Вам може знадобитися змінити цю логіку відповідно до вашого варіанту даних
+                data.add(duty.toInt())
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return data
+    }
+
+    fun getUserDateRange(userId: Int): Pair<Date, Date>? {
+        val db = readableDatabase
+        val selection = "$COLUMN_ID = ?"
+        val selectionArgs = arrayOf(userId.toString())
+        val cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_COMMENT),
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        var startDate: Date? = null
+        var endDate: Date? = null
+        try {
+            if (cursor.moveToFirst()) {
+                val comment = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COMMENT))
+                val dateRange = comment.split(" - ").map { it.trim() }
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+                if (dateRange.size == 2) {
+                    startDate = dateFormat.parse(dateRange[0])
+                    endDate = dateFormat.parse(dateRange[1])
+                }
+            }
+        } catch (e: Exception) {
+            // Log error or handle exception as appropriate
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+
+        return if (startDate != null && endDate != null) Pair(startDate, endDate) else null
+    }
+
+    fun getUserComment(rankAndSurname: String): String? {
+        val db = readableDatabase
+        val selection = "$COLUMN_RANK || ' ' || $COLUMN_SURNAME = ?"
+        val selectionArgs = arrayOf(rankAndSurname)
+        val cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_COMMENT),
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+        var comment: String? = null
+        if (cursor.moveToFirst()) {
+            comment = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COMMENT))
+        }
+        cursor.close()
+        db.close()
+        return comment
     }
 }

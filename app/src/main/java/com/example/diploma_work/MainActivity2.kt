@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
+import android.widget.Toast
+import java.io.File
 
 class MainActivity2 : AppCompatActivity() {
 
@@ -25,13 +27,24 @@ class MainActivity2 : AppCompatActivity() {
 
         val adminId = intent.getIntExtra("ADMIN_ID", -1)
 
+        val fileName = "user_graphic.xlsx"
+        val externalDir = getExternalFilesDir(null)
+        val newFilePath = File(externalDir, fileName)
+
+        // Перевірка та створення файлу, якщо його не існує
+        if (!newFilePath.exists()) {
+            newFilePath.createNewFile()
+            Toast.makeText(this, "Файл $fileName створено", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Файл $fileName існує, він буде перезаписаний", Toast.LENGTH_LONG).show()
+        }
+
         Handler().postDelayed({
             if (adminId != -1) {
                 val intent = Intent(this, MainActivity3Main::class.java)
                 intent.putExtra("ADMIN_ID", adminId)
                 startActivity(intent)
             } else {
-
                 startActivity(Intent(this, MainActivity::class.java))
             }
             finish()

@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.diploma_work.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class UsersAdapter(private var users: List<User>, private val context: Context, private val adminId: Int) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter(
+    private var users: List<User>,
+    private val context: Context,
+    private val adminId: Int
+) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private val db: UsersDataBaseHelper = UsersDataBaseHelper(context)
 
@@ -51,7 +53,6 @@ class UsersAdapter(private var users: List<User>, private val context: Context, 
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
-
         holder.rankTextView.text = user.rank
         holder.fatherTextView.text = user.father
         holder.nameTextView.text = user.name

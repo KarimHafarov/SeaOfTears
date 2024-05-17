@@ -18,6 +18,11 @@ class MainActivity3Main : AppCompatActivity() {
     private lateinit var db: UsersDataBaseHelper
     private lateinit var usersAdapter: UsersAdapter
     private var adminId: Int = -1
+    private var userId: Int = -1
+    private var startDate: String = ""
+    private var endDate: String = ""
+
+
 
     private lateinit var statistics: Button
     private lateinit var profile: Button
@@ -30,6 +35,7 @@ class MainActivity3Main : AppCompatActivity() {
         setContentView(binding.root)
 
         adminId = intent.getIntExtra("ADMIN_ID", -1)
+        userId = intent.getIntExtra("USER_ID", -1)
 
         db = UsersDataBaseHelper(this)
 
@@ -68,6 +74,8 @@ class MainActivity3Main : AppCompatActivity() {
             val intent = Intent(this, MainActivity6Graphic::class.java)
             intent.putExtra("ADMIN_ID", adminId)
             startActivity(intent)
+            intent.putExtra("START_DATE", startDate)
+            intent.putExtra("END_DATE", endDate)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }

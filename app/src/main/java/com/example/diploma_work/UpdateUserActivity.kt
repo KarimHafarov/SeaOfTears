@@ -2,7 +2,6 @@ package com.example.diploma_work
 
 import android.os.Bundle
 import android.widget.CalendarView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.diploma_work.databinding.ActivityUpdateUserBinding
@@ -30,48 +29,44 @@ class UpdateUserActivity : AppCompatActivity() {
         }
 
         val user = db.getUserById(userId)
-        if (user == null) {
-            finish()
-            return
+        user?.let {
+            binding.updateEditText2.setText(it.rank)
+            binding.updateEditText.setText(it.name)
+            binding.updateEditText3.setText(it.father)
+            binding.updateEditText1.setText(it.surname)
+            binding.timeEditText1.setText(it.time)
+            binding.dutyEditText1.setText(it.duty)
+            binding.editTextComment.setText(it.comment)
         }
 
-        binding.updateEditText2.setText(user.rank)
-        binding.updateEditText.setText(user.name)
-        binding.updateEditText3.setText(user.father)
-        binding.updateEditText1.setText(user.surname)
-        binding.timeEditText1.setText(user.time)
-        binding.dutyEditText1.setText(user.duty)
-        binding.editTextComment.setText(user.comment)
-
         binding.updateimageView.setOnClickListener {
-            val newRank = binding.updateEditText2.text.toString()
-            val newFather = binding.updateEditText3.text.toString()
-            val newName = binding.updateEditText.text.toString()
-            val newSurname = binding.updateEditText1.text.toString()
-            val newTime = binding.timeEditText1.text.toString()
-            val newDuty = binding.dutyEditText1.text.toString()
-            val newComment = binding.editTextComment.text.toString()
-            val updatedUser = User(userId, newRank, newName, newFather, newSurname, newTime, newDuty, newComment)
-
+            val updatedUser = User(
+                userId,
+                binding.updateEditText2.text.toString(),
+                binding.updateEditText.text.toString(),
+                binding.updateEditText3.text.toString(),
+                binding.updateEditText1.text.toString(),
+                binding.timeEditText1.text.toString(),
+                binding.dutyEditText1.text.toString(),
+                binding.editTextComment.text.toString()
+            )
             db.updateUser(updatedUser)
             finish()
             Toast.makeText(this, "Зміни збережено", Toast.LENGTH_LONG).show()
         }
 
-        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val selectedDate = String.format("%02d/%02d/%d", dayOfMonth, month + 1, year)
             if (startDate == null) {
                 startDate = selectedDate
             } else if (endDate == null) {
                 endDate = selectedDate
-                val formattedDates = "$startDate - $endDate"
-                binding.editTextComment.setText(formattedDates)
+                binding.editTextComment.setText("$startDate - $endDate")
             } else {
                 startDate = null
                 endDate = null
                 Toast.makeText(this, "Обрано більше двох дат. Оберіть ще раз.", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }

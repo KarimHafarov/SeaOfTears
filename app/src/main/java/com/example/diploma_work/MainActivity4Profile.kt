@@ -15,6 +15,8 @@ class MainActivity4Profile : AppCompatActivity() {
     private lateinit var textViewNameEmail: TextView
     private lateinit var adminDataBaseHelper: AdminDataBaseHelper
     private var adminId: Int = -1
+    private var userId: Int = -1
+
 
 
 
@@ -27,6 +29,8 @@ class MainActivity4Profile : AppCompatActivity() {
         adminDataBaseHelper = AdminDataBaseHelper(this)
 
         adminId = intent.getIntExtra("ADMIN_ID", -1)
+        userId = intent.getIntExtra("USER_ID", -1)
+
 
         val mainInfo: Button = findViewById(R.id.button_main)
         val statistics: Button = findViewById(R.id.button_statistic)

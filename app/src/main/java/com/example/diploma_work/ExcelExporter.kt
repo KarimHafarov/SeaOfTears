@@ -55,7 +55,7 @@ object ExcelExporter {
     }
 
     fun openExcelFile(context: Context, file: File) {
-        val fileUri: Uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+        val fileUri: Uri = FileProvider.getUriForFile(context, "com.example.diploma_work.provider", file)
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(fileUri, "application/vnd.ms-excel")
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

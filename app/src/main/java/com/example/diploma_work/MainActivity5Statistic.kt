@@ -20,6 +20,8 @@ class MainActivity5Statistic : AppCompatActivity() {
     private lateinit var usersAdapter: UsersAdapter
     private lateinit var db: UsersDataBaseHelper
     private var adminId: Int = -1
+    private var userId: Int = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class MainActivity5Statistic : AppCompatActivity() {
         recyclerViewUsers.adapter = usersAdapter
 
         adminId = intent.getIntExtra("ADMIN_ID", -1)
+        userId = intent.getIntExtra("USER_ID", -1)
+
 
         buttonSearch.setOnClickListener {
             val query = editTextSearch.text.toString().trim()
