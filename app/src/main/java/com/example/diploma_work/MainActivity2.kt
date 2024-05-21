@@ -34,7 +34,7 @@ class MainActivity2 : AppCompatActivity() {
         if (!newFilePath.exists()) {
             newFilePath.createNewFile()
         } else {
-            Toast.makeText(this, "Файл $fileName існує, він буде перезаписаний", Toast.LENGTH_LONG).show()
+
         }
 
         Handler().postDelayed({

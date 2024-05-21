@@ -44,13 +44,13 @@ object ExcelExporterGraphic {
             openExcelFile(context, filePath)
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(context, "Failed to save Excel file", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Не вдалось зберегти файл", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun writeHeaderRow(sheet: XSSFSheet, currentDate: String, currentMonth: Int) {
         val headerRow = sheet.createRow(0)
-        headerRow.createCell(0).setCellValue("User List as of $currentDate")
+        headerRow.createCell(0).setCellValue("Графік відсутності на $currentDate")
 
         val dateRow = sheet.createRow(1)
         for (i in 1..31) {
@@ -99,7 +99,7 @@ object ExcelExporterGraphic {
         try {
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(context, "No application available to view Excel files", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Не вдалось відкрити файл", Toast.LENGTH_SHORT).show()
         }
     }
 
