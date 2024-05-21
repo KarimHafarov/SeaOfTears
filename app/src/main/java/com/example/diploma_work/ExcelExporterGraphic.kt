@@ -62,7 +62,7 @@ object ExcelExporterGraphic {
     private fun writeUserDataRows(sheet: XSSFSheet, usersDataBaseHelper: UsersDataBaseHelper, userDataFromDatabase: Map<Int, Pair<String, String>>, startDate: String, endDate: String) {
         val highlightStyle = sheet.workbook.createCellStyle().apply {
             fillPattern = FillPatternType.SOLID_FOREGROUND
-            fillForegroundColor = IndexedColors.YELLOW.index
+            fillForegroundColor = IndexedColors.BLACK.index
         }
 
         userDataFromDatabase.forEach { (userId, userData) ->
@@ -82,7 +82,7 @@ object ExcelExporterGraphic {
                         set(Calendar.MONTH, startCal.get(Calendar.MONTH))
                         set(Calendar.DAY_OF_MONTH, i)
                     }
-                    if (!cellDate.before(startCal) && !cellDate.after(endCal)) {
+                    if (!cellDate.before(startCal) && !cellDate.after(endCal) || cellDate.equals(endCal)) {
                         cell.cellStyle = highlightStyle
                     }
                 }

@@ -31,10 +31,8 @@ class MainActivity2 : AppCompatActivity() {
         val externalDir = getExternalFilesDir(null)
         val newFilePath = File(externalDir, fileName)
 
-        // Перевірка та створення файлу, якщо його не існує
         if (!newFilePath.exists()) {
             newFilePath.createNewFile()
-            Toast.makeText(this, "Файл $fileName створено", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "Файл $fileName існує, він буде перезаписаний", Toast.LENGTH_LONG).show()
         }
