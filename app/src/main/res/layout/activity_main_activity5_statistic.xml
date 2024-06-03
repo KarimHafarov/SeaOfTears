@@ -57,7 +57,7 @@
         android:drawableTop="@drawable/baseline_main"
         android:gravity="center"
         android:text="Головна"
-        android:textColor="#A3A3A3"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -70,7 +70,7 @@
         android:drawableTop="@drawable/baseline_content_paste_search_2"
         android:gravity="center"
         android:text="Пошук"
-        android:textColor="@color/white"
+        android:textColor="#A3A3A3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/button_main"
         app:layout_constraintBottom_toBottomOf="parent" />

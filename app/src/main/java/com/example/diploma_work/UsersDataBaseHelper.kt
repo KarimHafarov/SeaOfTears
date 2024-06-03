@@ -249,27 +249,6 @@ class UsersDataBaseHelper(context: Context) : SQLiteOpenHelper(
         return users
     }
 
-    fun getDataForDateRange(userId: Int, startDate: String, endDate: String): List<Int> {
-        val data = mutableListOf<Int>()
-        val db = readableDatabase
-        val query =
-            "SELECT $COLUMN_DUTY FROM $TABLE_NAME WHERE $COLUMN_ID = $userId AND $COLUMN_TIME BETWEEN '$startDate' AND '$endDate'"
-        val cursor = db.rawQuery(query, null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                val duty = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUTY))
-                // В цьому прикладі, додамо кожен день обов'язків користувача до списку даних
-                // Вам може знадобитися змінити цю логіку відповідно до вашого варіанту даних
-                data.add(duty.toInt())
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        db.close()
-
-        return data
-    }
 
     fun getUserDateRange(userId: Int): Pair<Date, Date>? {
         val db = readableDatabase

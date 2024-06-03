@@ -60,7 +60,7 @@
         android:drawableTop="@drawable/baseline_main"
         android:gravity="center"
         android:text="Головна"
-        android:textColor="#A3A3A3"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -99,7 +99,7 @@
         android:drawableTop="@drawable/baseline_account2"
         android:gravity="center"
         android:text="Профіль"
-        android:textColor="@color/white"
+        android:textColor="#A3A3A3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline5"
         app:layout_constraintBottom_toBottomOf="parent" />

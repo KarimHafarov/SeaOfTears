@@ -74,6 +74,7 @@ object ExcelExporterGraphic {
             dateRange?.let { (start, end) ->
                 val startCal = Calendar.getInstance().apply { time = start }
                 val endCal = Calendar.getInstance().apply { time = end }
+                endCal.add(Calendar.DAY_OF_MONTH, 1) // Додаємо один день до кінцевої дати
 
                 for (i in 1..31) {
                     val cell = userRow.createCell(i)
@@ -82,7 +83,7 @@ object ExcelExporterGraphic {
                         set(Calendar.MONTH, startCal.get(Calendar.MONTH))
                         set(Calendar.DAY_OF_MONTH, i)
                     }
-                    if (!cellDate.before(startCal) && !cellDate.after(endCal) || cellDate.equals(endCal)) {
+                    if (!cellDate.before(startCal) && !cellDate.after(endCal)) {
                         cell.cellStyle = highlightStyle
                     }
                 }
